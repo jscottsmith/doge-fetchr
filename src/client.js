@@ -7,6 +7,15 @@ import './index.html';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from 'components';
+import { Provider } from 'react-redux';
+
+import setupStore from './store/setupStore';
 
 const root = document.getElementById('root');
-ReactDOM.render(<App />, root);
+const store = setupStore();
+const app = (
+    <Provider store={store}>
+        <App />
+    </Provider>
+);
+ReactDOM.render(app, root);
