@@ -2,7 +2,10 @@
     "name": "starter",
     "version": "1.0.0",
     "description": "Simple Webpack Starter",
-    "keywords": ["react", "webpack"],
+    "keywords": [
+        "react",
+        "webpack"
+    ],
     "author": "J Scott Smith",
     "license": "ISC",
     "repository": {
@@ -17,7 +20,9 @@
     "dependencies": {
         "prop-types": "^15.5.10",
         "react": "^15.0.0",
-        "react-dom": "^15.0.0"
+        "react-dom": "^15.0.0",
+        "react-redux": "^5.0.6",
+        "redux": "^3.7.2"
     },
     "devDependencies": {
         "babel-cli": "^6.24.1",
