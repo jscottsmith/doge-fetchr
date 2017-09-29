@@ -13,7 +13,8 @@ const clientConfig = {
         compress: false,
         port: 3000,
     },
-    entry: path.resolve(SRC + '/client.js'),
+
+    entry: ['whatwg-fetch', path.resolve(SRC + '/client.js')],
 
     output: {
         path: DIST,
