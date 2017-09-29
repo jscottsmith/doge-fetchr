@@ -1,15 +1,13 @@
-import { actionTypes } from '../config/constants';
-
 const AppState = {
     doge: 'Hello from doge state!',
 };
 
-function appReducer(state = AppState, action) {
+function appReducer(state = AppState, { type }) {
     const cases = {
         default: () => state,
     };
 
-    return (cases[action] || cases.default)();
+    return (cases[type] || cases.default)();
 }
 
 export default appReducer;
