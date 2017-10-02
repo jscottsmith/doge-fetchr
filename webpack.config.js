@@ -24,6 +24,7 @@ const clientConfig = {
     resolve: {
         alias: {
             components: path.resolve(SRC + '/components'),
+            utils: path.resolve(SRC + '/utils'),
         },
     },
 
