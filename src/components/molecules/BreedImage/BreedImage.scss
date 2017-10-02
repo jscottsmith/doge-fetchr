@@ -1,0 +1,32 @@
+@import '../../../styles/mixins.scss';
+
+:local(.breedImage) {
+    padding: 2rem;
+    background-color: white;
+    margin-bottom: 2rem;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    figcaption {
+        margin-top: 1rem;
+    }
+}
+
+@include tablet {
+    :local(.breedImage) {
+        margin: 0 2rem 2rem 0;
+
+        img {
+            display: block;
+            width: auto;
+            height: 30rem;
+        }
+
+        figcaption {
+            font-size: 2rem;
+        }
+    }
+}
