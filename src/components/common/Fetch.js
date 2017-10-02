@@ -9,7 +9,9 @@ import { fetch as fetchAction } from '../../actions';
 // being made already exists. If it does not it will
 // dispatch an action that fetches the appropriate
 // endpoint, then the data is passed to the children
-// via a render callback.
+// via a render callback. Cache is enabled by default
+// When disabled duplicate requests to the same endpoint
+// will not return cached values.
 //
 // This would be more useful in an app with routing
 // but should also be a helpful pattern with a simple
@@ -22,15 +24,17 @@ class Fetch extends Component {
         endpoint: PropTypes.string.isRequired,
         fetchAction: PropTypes.func.isRequired,
         requests: PropTypes.object.isRequired,
+        cache: PropTypes.bool.isRequired,
     };
 
     static defaultProps = {
         api: 'https://dog.ceo/api',
         endpoint: '',
+        cache: true,
     };
 
     componentWillMount() {
-        const { api, endpoint, requests } = this.props;
+        const { api, endpoint, requests, cache } = this.props;
 
         // Dispatch our action with the endpoint to fetch from.
         const url = `${api}${endpoint}`;
@@ -38,7 +42,7 @@ class Fetch extends Component {
         // check to see if the request has
         // already been made during this session
         // if it has return early and don't fetch
-        if (requests[url]) {
+        if (cache && requests[url]) {
             console.warn('Cached request from', url);
             return;
         }
