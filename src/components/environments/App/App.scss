@@ -1,10 +1,39 @@
 :global {
-	html {
-		background-color: #f3f3f3;
-		font-family: 'Futura', Helvetica, sans-serif;
-	}
+    html {
+        background-color: #f3f3f3;
+        font-family: 'Futura', Helvetica, sans-serif;
+        font-size: 62.5%;
+        min-height: 100%;
+    }
+
+    body {
+        font-size: 1.6rem;
+        min-height: 100%;
+    }
+
+    button {
+        padding: 1.4rem 2rem;
+        // outline: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 2rem;
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    h1,
+    h2 {
+        font-weight: normal;
+        em {
+            color: mediumaquamarine;
+            font-style: normal;
+        }
+    }
 }
 
 :local(.app) {
-	color: #333;
+    color: #333;
 }

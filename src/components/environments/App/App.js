@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { BreedSelector, BreedFetcher } from 'components';
 import styles from './App.scss';
 
 export default class App extends Component {
@@ -7,18 +8,32 @@ export default class App extends Component {
         breeds: PropTypes.array.isRequired,
     };
 
+    state = {
+        breedsToFetch: [],
+    };
+
+    handleSeach = (breedsToFetch = []) => {
+        // takes the array of breeds provided by the
+        // BreedSelector and sets the values to state
+        // for the BreedFetchr to create each request
+
+        this.setState(() => ({
+            breedsToFetch,
+        }));
+    };
+
     render() {
+        const { breedsToFetch } = this.state;
         const { breeds } = this.props;
+
         return (
-            <div className={styles.app}>
-                <h1>Hello 👋🏻 Doge 🐶</h1>
-                <h2>Breeds:</h2>
-                <ul>
-                    {breeds.map((breed, i) => (
-                        <li key={`breed-${i}`}>{breed}</li>
-                    ))}
-                </ul>
-            </div>
+            <main className={styles.app}>
+                <BreedSelector
+                    breeds={breeds}
+                    handleSearch={this.handleSeach}
+                />
+                <BreedFetcher breedsToFetch={breedsToFetch} />
+            </main>
         );
     }
 }
