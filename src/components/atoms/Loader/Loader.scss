@@ -1,0 +1,21 @@
+:global {
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+:local(.loader) {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 3rem;
+    animation: spin 1s infinite linear;
+    transform-origin: center center;
+}
