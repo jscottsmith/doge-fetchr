@@ -1,0 +1,17 @@
+:local(.option) {
+    display: block;
+    width: 100%;
+    text-align: left;
+    text-transform: capitalize;
+    transition: background 300ms;
+
+    &:hover,
+    &:focus {
+        background-color: mediumslateblue;
+        color: black;
+    }
+}
+
+:local(.selected) {
+    background-color: mediumaquamarine;
+}
