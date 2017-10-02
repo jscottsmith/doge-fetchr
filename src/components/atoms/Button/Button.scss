@@ -1,0 +1,20 @@
+:local(.button) {
+    background-color: mediumaquamarine;
+    color: black;
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+    &:focus {
+    }
+}
+
+:local(.primary) {
+    background-color: mediumslateblue;
+    color: black;
+}
+
+:local(.secondary) {
+    background-color: tomato;
+    color: black;
+}
