@@ -38,6 +38,7 @@ $selectTransTime: 0.3s;
     max-height: 50vh;
     overflow-x: visible;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     text-transform: capitalize;
     background-color: white;
     opacity: 0;
