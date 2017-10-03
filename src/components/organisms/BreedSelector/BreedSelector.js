@@ -18,17 +18,46 @@ export default class BreedSelector extends Component {
     constructor(props) {
         super(props);
 
-        // an array of selects to map over filled with objects and
-        // a corresponding id that will be associated with the select
-        const selects = Array.from(
-            Array(props.selectorAmount)
-        ).map((select, i) => ({ id: `breed-${i}`, value: null }));
+        const { selectorAmount, breeds } = props;
 
         this.state = {
-            breeds: props.breeds,
-            selects,
+            breeds,
+            selectorAmount,
+            selects: this.getInitialSelectState(selectorAmount),
         };
     }
+
+    getInitialSelectState(selectorAmount) {
+        // an array of selects to map over filled with objects and
+        // a corresponding id that will be associated with the select
+        const selects = Array.from(Array(selectorAmount)).map((select, i) => ({
+            id: `breed-${i}`,
+            value: null,
+        }));
+
+        return selects;
+    }
+
+    getAmountOptions() {
+        const MAX = 10;
+
+        const options = Array.from(Array(MAX)).map((x, i) => {
+            const value = i + 1;
+            return {
+                label: value.toString(),
+                value,
+            };
+        });
+
+        return options;
+    }
+
+    handleAmountChange = ({ value: selectorAmount }) => {
+        this.setState(() => ({
+            selectorAmount,
+            selects: this.getInitialSelectState(selectorAmount),
+        }));
+    };
 
     handleFindBreeds = () => {
         const { selects } = this.state;
@@ -110,39 +139,62 @@ export default class BreedSelector extends Component {
     }
 
     render() {
-        const { breeds, selects } = this.state;
-        const { selectorAmount } = this.props;
+        const { breeds, selects, selectorAmount } = this.state;
+
         const showClear = this.shouldShowClear();
         const hasBreeds = this.hasSelectedBreeds();
 
         return (
             <section className={styles.breedSelector}>
-                <header className={styles.header}>
-                    <h3>Select {selectorAmount} breeds:</h3>
-                </header>
-
-                {selects.map(({ id, value }, i) => (
+                <div className={styles.container}>
+                    <h3 className={styles.header}>
+                        How many breeds would you like to find?
+                    </h3>
                     <Select
-                        key={id}
-                        id={id}
-                        label={`Select ${toOrdinalNumber(i + 1)} breed`}
-                        value={value}
-                        onChange={this.handleSelectChange}
+                        id="number-of-breeds"
+                        label="Number of Breeds to find"
+                        value={selectorAmount}
+                        onChange={this.handleAmountChange}
                         className={styles.select}
-                        options={breeds.map(breed => ({
-                            label: breed,
-                            value: breed,
-                        }))}
+                        options={this.getAmountOptions()}
                     />
-                ))}
-                <div className={styles.buttonContainer}>
+                </div>
+
+                <div className={styles.container}>
+                    <h3 className={styles.header}>
+                        Ok, select {selectorAmount} breeds:
+                    </h3>
+                    {selects.map(({ id, value }, i) => (
+                        <Select
+                            key={id}
+                            id={id}
+                            label={`Select ${toOrdinalNumber(i + 1)} breed`}
+                            value={value}
+                            onChange={this.handleSelectChange}
+                            className={styles.select}
+                            options={breeds.map(breed => ({
+                                label: breed,
+                                value: breed,
+                            }))}
+                        />
+                    ))}
+                </div>
+
+                <div className={styles.container}>
                     {hasBreeds && (
-                        <Button onClick={this.handleFindBreeds}>
+                        <Button
+                            onClick={this.handleFindBreeds}
+                            className={styles.button}
+                        >
                             Find Breeds
                         </Button>
                     )}
                     {showClear && (
-                        <Button onClick={this.handleClear} secondary>
+                        <Button
+                            onClick={this.handleClear}
+                            className={styles.button}
+                            secondary
+                        >
                             Clear Selected
                         </Button>
                     )}

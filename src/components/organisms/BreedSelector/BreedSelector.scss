@@ -2,13 +2,17 @@
 
 :local(.breedSelector) {
     padding: 0 2rem;
-    display: flex;
-    flex-flow: row wrap;
-    // background-image: linear-gradient(#eabe7f, #a0e2cc);
 }
 
-:local(.header) {
+:local(.container) {
     width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+:local(.button) {
+    width: auto;
+    margin-right: 1rem;
 }
 
 :local(.select) {
@@ -16,18 +20,11 @@
     margin-bottom: 2rem;
 }
 
-:local(.buttonContainer) {
+:local(.header) {
     width: 100%;
-    button {
-        width: 100%;
-        margin-bottom: 2rem;
-    }
 }
 
 @include tablet {
-    :local(.breedSelector) {
-    }
-
     :local(.select) {
         $gut: 2%;
         $width: (100% - $gut * 2) / 3;
@@ -38,10 +35,8 @@
         }
     }
 
-    :local(.buttonContainer) {
-        button {
-            width: auto;
-            margin-right: 1rem;
-        }
+    :local(.button) {
+        width: auto;
+        margin-right: 1rem;
     }
 }
