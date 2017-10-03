@@ -1,8 +1,6 @@
-const AppState = {
-    doge: 'Hello from doge state!',
-};
+import appState from '../config/appState.js';
 
-function appReducer(state = AppState, { type }) {
+function appReducer(state = appState, { type }) {
     const cases = {
         default: () => state,
     };
