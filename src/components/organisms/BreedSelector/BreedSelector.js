@@ -118,10 +118,7 @@ export default class BreedSelector extends Component {
         return (
             <section className={styles.breedSelector}>
                 <header className={styles.header}>
-                    <h1>
-                        Find some doggo 🐶 by{' '}
-                        <em>selecting {selectorAmount}</em> breeds.
-                    </h1>
+                    <h3>Select {selectorAmount} breeds:</h3>
                 </header>
 
                 {selects.map(({ id, value }, i) => (
