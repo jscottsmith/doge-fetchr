@@ -14,7 +14,7 @@ export default class Option extends Component {
         selectId: PropTypes.string.isRequired,
         selected: PropTypes.bool.isRequired, // current selected value
         focused: PropTypes.bool.isRequired, // current focused value
-        value: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     };
 
     constructor(props) {
