@@ -12,6 +12,7 @@ $selectTransTime: 0.3s;
     width: 100%;
     text-transform: capitalize;
     text-align: left;
+    color: dodgerblue;
     background-color: white;
     border-bottom: 2px solid black;
 
@@ -66,6 +67,7 @@ $selectTransTime: 0.3s;
 
 :local(.hasValue) {
     :local(.label) {
+        color: mediumaquamarine;
         border-bottom: 2px solid mediumaquamarine;
     }
 }
