@@ -14,10 +14,13 @@ export default class Select extends Component {
         options: PropTypes.arrayOf(
             PropTypes.shape({
                 label: PropTypes.string.isRequired,
-                value: PropTypes.string.isRequired,
+                value: PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.number,
+                ]),
             })
         ),
-        value: PropTypes.string,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     };
 
     static defaultProps = {
