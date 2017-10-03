@@ -135,9 +135,7 @@ export default class Select extends Component {
 
         switch (event.which) {
             case 27: // escape
-                this.setState({
-                    isOpen: false,
-                });
+                this.hideOptions();
                 break;
             case 32: // space
                 event.preventDefault();
